@@ -17,6 +17,7 @@
       function clickupgrade() {
         if (clicks > clickcost-1) {
           clicks = afterclick
+          afterclick = clicks-clickcost
           document.getElementById("clicks").innerText = "Clicks: "+clicks
           clickperclick = clickperclick+1
           clickcost = clickcost+100
