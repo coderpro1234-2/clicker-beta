@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mario Clicker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="item1.png">
+    <script>
+      var clicks = 1
+      var clickperclick = 1
+      var clickcost = 100
+      var afterclick = 0
+      function clicked() {
+        afterclick = clicks-clickcost
+        document.getElementById("clicks").innerText = "Clicks: "+clicks
+        clicks += clickperclick
+      }
+      function clickupgrade() {
+        if (clicks > clickcost-1) {
+          clicks = afterclick
+          document.getElementById("clicks").innerText = "Clicks: "+clicks
+          clickperclick = clickperclick+1
+          clickcost = clickcost+100
+          document.getElementById("clickcost").innerText = "Cost: "+clickcost+" clicks"
+        }
+        else {
+          alert("Not Enough Money")
+        }
+      }
+      function costu() {
+        var x = document.getElementById("costume1").value;
+          document.getElementById("trimg").src = "item"+x+".png"
+      }
+    </script>
+  </head>
+  <body>
+    <center>
+      <h1>Mario Clicker</h1>
+      <input id="costume1" type="range" min="1" max="3" steps="1" onchange="costu()" oninput="costu()" value="1"><br><br>
+      <input id="trimg" type="image" src="item1.png" onclick="clicked()" draggable="false"/>
+      <h4 id="clicks">Clicks: 0</h4>
+      <h4>Upgrade Clicks Per Click</h4>
+      <input type="image" src="upgrade.png" onclick="clickupgrade()" draggable="false">
+      <h4 id="clickcost">Cost: 100 clicks</h4>
+    </center>
+  </body>
+</html>
